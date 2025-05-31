@@ -14,7 +14,6 @@ SELECT TOP 10 *  from retail_sales_tb ;
 --total number of rows
 Select count(*) from retail_sales_tb;
 
-SELECT count(distinct customer_id) from retail_sales_tb;
 
 select * from retail_sales_tb
 where transactions_id is null
@@ -71,3 +70,10 @@ where
 
 select count(*) from retail_sales_tb;
 
+--DATA EXPLORATION
+
+--how many sales we have?
+select count(*) as total_sale from retail_sales_tb;
+
+--number of custmers?
+select count(Distinct customer_id) from retail_sales_tb;
