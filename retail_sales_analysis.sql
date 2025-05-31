@@ -13,3 +13,61 @@ SELECT TOP 10 *  from retail_sales_tb ;
 
 --total number of rows
 Select count(*) from retail_sales_tb;
+
+SELECT count(distinct customer_id) from retail_sales_tb;
+
+select * from retail_sales_tb
+where transactions_id is null
+
+select * from retail_sales_tb
+where
+	transactions_id is null
+	or
+	sale_date is null
+	or
+	sale_time is null
+	or
+	customer_id is null
+	or
+	gender is null
+	or
+	age is null
+	or
+	category is null
+	or 
+	quantiy is null
+	or
+	price_per_unit is null
+	or 
+	cogs is null
+	or
+	total_sale is null;
+
+
+--deleting rows with null values
+delete from retail_sales_tb
+where
+	transactions_id is null
+	or
+	sale_date is null
+	or
+	sale_time is null
+	or
+	customer_id is null
+	or
+	gender is null
+	or
+	age is null
+	or
+	category is null
+	or 
+	quantiy is null
+	or
+	price_per_unit is null
+	or 
+	cogs is null
+	or
+	total_sale is null;
+
+select count(*) from retail_sales_tb;
+
