@@ -76,4 +76,8 @@ select count(*) from retail_sales_tb;
 select count(*) as total_sale from retail_sales_tb;
 
 --number of custmers?
-select count(Distinct customer_id) from retail_sales_tb;
+select count(Distinct
+ustomer_id) from retail_sales_tb;
+
+--total sales with respect to gender
+select gender, sum(total_sale) from retail_sales_tb group by gender;
