@@ -142,3 +142,15 @@ select top 5 customer_id, sum(total_sale) as total_sale
 select category, count(distinct customer_id) as total_unique_users 
 	from retail_sales_tb 
 		 group by category;
+
+--Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
+with hourly_sale as (
+	select *,
+	case
+		when DATEPART(HOUR, sale_time) < 12 then 'Morning'
+		when DATEPART(HOUR, sale_time) between 12 and 17 then 'Afternoon'
+		else 'Evening'
+	end as shift
+	from retail_sales_tb
+)
+select shift, count(*) as total_order from hourly_sale group by shift;
