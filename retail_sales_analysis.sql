@@ -131,3 +131,14 @@ SELECT sale_year, sale_month, avg_sale
 FROM monthly_avg
 WHERE rn = 1
 ORDER BY sale_year;
+
+--Write a SQL query to find the top 5 customers based on the highest total sales
+select top 5 customer_id, sum(total_sale) as total_sale 
+	from retail_sales_tb 
+		group by customer_id 
+		order by sum(total_sale) desc;
+
+--Write a SQL query to find the number of unique customers who purchased items from each category
+select category, count(distinct customer_id) as total_unique_users 
+	from retail_sales_tb 
+		 group by category;
