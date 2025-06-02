@@ -109,3 +109,25 @@ select category, sum(total_sale) as totat_sales from retail_sales_tb group by ca
 --Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.:
 select avg(age) from retail_sales_tb 
 				where category = 'Beauty';
+
+--Write a SQL query to find all transactions where the total_sale is greater than 1000.
+select * from retail_sales_tb 
+		 where total_sale > 1000;
+
+--Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.:
+select gender,category, count(transactions_id) from retail_sales_tb group by gender,category;
+
+--Write a SQL query to calculate the average sale for each month. Find out best selling month in each year
+WITH monthly_avg AS (
+  SELECT 
+    YEAR(sale_date) AS sale_year,
+    MONTH(sale_date) AS sale_month,
+    AVG(total_sale) AS avg_sale,
+    ROW_NUMBER() OVER (PARTITION BY YEAR(sale_date) ORDER BY AVG(total_sale) DESC) AS rn
+  FROM retail_sales_tb
+  GROUP BY YEAR(sale_date), MONTH(sale_date)
+)
+SELECT sale_year, sale_month, avg_sale
+FROM monthly_avg
+WHERE rn = 1
+ORDER BY sale_year;
