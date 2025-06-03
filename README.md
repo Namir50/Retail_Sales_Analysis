@@ -8,4 +8,4 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
    ```sql
    select * from retail_sales_tb
 	     where sale_date = '2022-11-05'
-   '''
+   ```
