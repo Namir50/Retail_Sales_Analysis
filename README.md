@@ -71,7 +71,7 @@ WHERE rn = 1
 ORDER BY sale_year;
 ```
 
-8. **Find the top 5 customers based on the highest total sales **:
+8. **Find the top 5 customers based on the highest total sales**:
 ```sql
 select top 5 customer_id, sum(total_sale) as total_sale 
 	from retail_sales_tb 
