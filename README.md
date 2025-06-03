@@ -29,24 +29,25 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
    ```
    
 4. Find the average age of customers who purchased items from the 'Beauty' category
-   ``sql
+   ```sql
    select avg(age) from retail_sales_tb 
 				where category = 'Beauty';
+   ```
 
-5. All transactions where the total_sale is greater than 1000
+6. All transactions where the total_sale is greater than 1000
    ```sql
    select * from retail_sales_tb 
 		 where total_sale > 1000;
    ```
 
-6. The total number of transactions (transaction_id) made by each gender in each category
+7. The total number of transactions (transaction_id) made by each gender in each category
    ```sql
    select gender,category, count(transactions_id)
    		           from retail_sales_tb
                            group by gender,category;
    ```
 
-7. Calculate the average sale for each month. Find out best selling month in each year
+8. Calculate the average sale for each month. Find out best selling month in each year
    ```sql
    WITH monthly_avg AS (
 	  SELECT 
@@ -63,7 +64,7 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
 		ORDER BY sale_year;
    ```
 
-8. Find the top 5 customers based on the highest total sales
+9. Find the top 5 customers based on the highest total sales
    ```sql
    select top 5 customer_id, sum(total_sale) as total_sale 
 	from retail_sales_tb 
@@ -71,14 +72,14 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
 		order by sum(total_sale) desc;
    ```
 
-9. The number of unique customers who purchased items from each category
+10. The number of unique customers who purchased items from each category
    ```sql
    select category, count(distinct customer_id) as total_unique_users 
 	from retail_sales_tb 
 		 group by category;
    ```
 
-10. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
+11. Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)
     ```sql
     with hourly_sale as (
 	select *,
