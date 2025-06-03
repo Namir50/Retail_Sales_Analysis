@@ -6,14 +6,14 @@ This project showcases a complete retail sales data analysis workflow using Micr
 
 ### Data Analysis & Findings
 
-1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05**:
+1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05**
 ```sql
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
-2. **Retrieve all transactions where the category is 'Clothing',the quantity sold is more than 4, in the month of Nov-2022**:
+2. **Retrieve all transactions where the category is 'Clothing',the quantity sold is more than 4, in the month of Nov-2022**
 ```sql
 select * from retail_sales_tb
 	     where 
@@ -28,7 +28,7 @@ select * from retail_sales_tb
 			format(sale_date, 'yyyy-MM') = '2022-11'
 ```
 
-3. **Calculate the total sales (total_sale) for each category.**:
+3. **Calculate the total sales (total_sale) for each category.**
 ```sql
 SELECT 
     category,
@@ -38,23 +38,23 @@ FROM retail_sales
 GROUP BY 1
 ```
 
-4. **Find the average age of customers who purchased items from the 'Beauty' category.**:
+4. **Find the average age of customers who purchased items from the 'Beauty' category**
 ```sql
 select category, sum(total_sale) as totat_sales from retail_sales_tb group by category;
 ```
 
-5. **Find all transactions where the total_sale is greater than 1000**:
+5. **Find all transactions where the total_sale is greater than 1000**
 ```sql
 SELECT * FROM retail_sales
 WHERE total_sale > 1000
 ```
 
-6. **Find the total number of transactions (transaction_id) made by each gender in each category**:
+6. **Find the total number of transactions (transaction_id) made by each gender in each category**
 ```sql
 select gender,category, count(transactions_id) from retail_sales_tb group by gender,category;
 ```
 
-7. **Calculate the average sale for each month. Find out best selling month in each year**:
+7. **Calculate the average sale for each month. Find out best selling month in each year**
 ```sql
 WITH monthly_avg AS (
   SELECT 
@@ -71,7 +71,7 @@ WHERE rn = 1
 ORDER BY sale_year;
 ```
 
-8. **Find the top 5 customers based on the highest total sales**:
+8. **Find the top 5 customers based on the highest total sales**
 ```sql
 select top 5 customer_id, sum(total_sale) as total_sale 
 	from retail_sales_tb 
@@ -79,14 +79,14 @@ select top 5 customer_id, sum(total_sale) as total_sale
 		order by sum(total_sale) desc;
 ```
 
-9. **Find the number of unique customers who purchased items from each category.**:
+9. **Find the number of unique customers who purchased items from each category.**
 ```sql
 select category, count(distinct customer_id) as total_unique_users 
 	from retail_sales_tb 
 		 group by category;
 ```
 
-10. **Create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**:
+10. **Create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**
 ```sql
 with hourly_sale as (
 	select *,
