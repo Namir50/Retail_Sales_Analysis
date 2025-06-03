@@ -64,7 +64,7 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
 		ORDER BY sale_year;
    ```
 
-9. Find the top 5 customers based on the highest total sales
+ 9. Find the top 5 customers based on the highest total sales
    ```sql
    select top 5 customer_id, sum(total_sale) as total_sale 
 	from retail_sales_tb 
@@ -91,7 +91,7 @@ This project showcases a complete **Retail Sales Data Analysis** workflow using 
 	from retail_sales_tb
 	)
 	select shift, count(*) as total_order from hourly_sale group by shift;
-    ```
+     ```
 
 
 
